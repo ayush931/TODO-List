@@ -1,13 +1,15 @@
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, FINISH_TODO } from "../constants/actions"
+
 function todoReducer (state=[], action) {
 
-    if (action.type == 'add_todo') {
+    if (action.type == ADD_TODO) {
 
         let todoText = action.payload.todoText
         return [
             ...state, {id: state.length + 1, todoData: todoText, finished: false}
         ]
 
-    } else if (action.type == 'edit_todo') {
+    } else if (action.type == EDIT_TODO) {
 
         let todo = action.payload.todo
         let todoText = action.payload.todoText
@@ -19,13 +21,13 @@ function todoReducer (state=[], action) {
         })
         return updateList
 
-    } else if (action.type == 'delete_todo') {
+    } else if (action.type == DELETE_TODO) {
 
         let todo = action.payload.todo
         const updateList = state.filter(t => t.id != todo.id)
         return updateList
 
-    } else if (action. type == 'finish_todo') {
+    } else if (action. type == FINISH_TODO) {
 
         let todo = action.payload.todo
         let isFinished = action.payload.isFinished

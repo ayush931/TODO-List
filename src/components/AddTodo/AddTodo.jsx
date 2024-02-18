@@ -1,10 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { addTodo } from "../../actions/todoActions"
 
-function AddTodo () {
-
-    const dispatch = useDispatch()
+function AddTodo ({ addTodo }) {
 
     const [inputText, setInputText] = useState('')
 
@@ -18,7 +17,7 @@ function AddTodo () {
                 onChange={e => setInputText(e.target.value)}
             />
             <button onClick={() => {
-                dispatch ({type: 'add_todo', payload: {todoText: inputText}})
+                addTodo(inputText)
                 setInputText('')
             }}>Add</button>
         </div>
